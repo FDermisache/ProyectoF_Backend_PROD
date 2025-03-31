@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const ENVIROMENT = {
-    PORT: process.env.PORT || 3000,
+    /* PORT: process.env.PORT || 3000, */
     MONGO_DB_URL: process.env.MONGO_DB_URL,
     SECRET_KEY_JWT: process.env.SECRET_JWT_KEY,
     GMAIL_USERNAME: process.env.GMAIL_USERNAME,
