@@ -10,40 +10,21 @@ import channelRouter from "./routes/channel.router.js";
 
 const app = express()
 
-//Dehabilito la politica de cors
-//Si quieren un backend publico
+
 app.use(cors())
 
-//Si quieren que sea reservado para cierto dominio
-/* 
-app.use(cors(
-    {
-        origin: ENVIROMENT.URL_FRONTEND
-    }
-)) 
-*/
+
 app.use(express.json())
 
 
-/* 
-Crear una ruta llamada /api/auth
 
-POST /register
-body {
-    username
-    email
-    password
-}
+app.use((req, res, next) => {
+    // Establece el timeout a 30 segundos (30000 ms) para todas las solicitudes
+    req.setTimeout(30000);  // Timeout para la solicitud
+    res.setTimeout(30000);  // Timeout para la respuesta
+    next();
+  });
 
-response: {
-    message: "User registered",
-    status:201,
-    ok: true
-}
-
-NO SE DEBE GUARDAR AL USUARIO EN NINGUN LADO con consologuear que llegan los datos en el body basta
-Probar hacer el registro con postman
-*/
 
 app.use('/api/auth', authRouter)
 app.use('/api/workspace', workspace_router)
@@ -57,6 +38,6 @@ app.get('/api/test/comprar', authMiddleware , (req,res)=> {
 }
 )
 app.listen(ENVIROMENT.PORT, () =>{
-    console.log(`El servidor se esta ejecutando en http://localhost:${ENVIROMENT.PORT}`)
+    console.log(`El servidor se esta ejecutando en http://localhost:${ENVIROMENT}`)
 })
 
