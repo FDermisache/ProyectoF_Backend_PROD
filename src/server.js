@@ -11,19 +11,19 @@ import channelRouter from "./routes/channel.router.js";
 const app = express()
 
 
-app.use(cors())
+app.use(cors({
+    origin: ENVIROMENT.URL_FRONTEND,
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
+
 
 
 app.use(express.json())
 
 
 
-app.use((req, res, next) => {
-    // Establece el timeout a 30 segundos (30000 ms) para todas las solicitudes
-    req.setTimeout(30000);  // Timeout para la solicitud
-    res.setTimeout(30000);  // Timeout para la respuesta
-    next();
-  });
+
 
 
 app.use('/api/auth', authRouter)

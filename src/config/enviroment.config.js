@@ -10,7 +10,7 @@ const ENVIROMENT = {
     GMAIL_USERNAME: process.env.GMAIL_USERNAME,
     GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
     URL_BACKEND: process.env.URL_BACKEND || 'https://proyecto-f-backend-prod.vercel.app',
-    URL_FRONTEND: process.env.URL_FRONTEND ||  'https://proyecto-f-frontend-prod-n1n9.vercel.app',
+    URL_FRONTEND: process.env.URL_FRONTEND ||  'https://proyecto-f-frontend-prod-9w3s.vercel.app',
     
 }
 
