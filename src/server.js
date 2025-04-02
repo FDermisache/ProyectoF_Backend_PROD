@@ -11,11 +11,24 @@ import channelRouter from "./routes/channel.router.js";
 const app = express()
 
 
+const allowedOrigins = [
+    'https://proyecto-f-frontend-prod-9w3s.vercel.app',
+    'https://proyecto-f-frontend-prod-git-786edd-federicos-projects-490a97db.vercel.app'
+];
+
 app.use(cors({
-    origin: ENVIROMENT.URL_FRONTEND,
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization"
 }));
+
+
 
 
 
